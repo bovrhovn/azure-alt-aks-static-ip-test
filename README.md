@@ -1,0 +1,1 @@
+# azure-alt-aks-static-ip-test
