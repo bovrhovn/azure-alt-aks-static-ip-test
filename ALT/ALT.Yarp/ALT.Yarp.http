@@ -1,0 +1,6 @@
+﻿### Yarp health check
+GET {{baseyarpurl}}/health
+Accept: application/json
+
+### Yarp proxy to WeatherForecast
+GET {{baseyarpurl}}/api/instance-name

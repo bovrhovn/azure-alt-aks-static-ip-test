@@ -1,0 +1,5 @@
+### GET Health Check
+GET {{baseapiurl}}/health
+Accept: application/json
+
+###
