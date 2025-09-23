@@ -22,7 +22,7 @@ https://github.com/bovrhovn/azure-alt-aks-static-ip
 #>
 param(
     [Parameter(Mandatory = $true)]
-    $ResourceGroupName = "rg-web",
+    $ResourceGroupName = "rg-alt-aks",
     [Parameter(Mandatory = $true)]
     $TemplateFile = "main.bicep",
     [Parameter(Mandatory = $true)]
@@ -34,7 +34,7 @@ $logPath = "$HOME/Downloads/create-resources.log"
 Start-Transcript -Path $logPath -Force
 Write-Host "Starting deployment to Azure..."
 New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateFile $templateFile -TemplateParameterFile $parametersFile
-Write-Host "Resources created, deploying apps."
+Write-Host "Resources created, go and deploy containers and run yaml files to create resources in AKS."
 Stop-Transcript
 #read it in notepad
 if ($OpenLog)

@@ -1,5 +1,4 @@
-﻿
-param location string = resourceGroup().location
+﻿param location string = resourceGroup().location
 param vnetName string = 'myVnet'
 param aksName string = 'myAks'
 param dnsZoneName string = 'mydomain.com'
@@ -10,6 +9,7 @@ param adminUsername string
 param adminPassword string
 param acrName string = 'myAcr'
 param identityName string = 'myAksIdentity'
+param loadTestName string = 'myLoadTest'
 
 module vnetMod './vnet.bicep' = {
   name: 'vnetDeployment'
@@ -75,5 +75,13 @@ module vmssMod './vmss.bicep' = {
     subnetId: vnetMod.outputs.vmssSubnetId
     adminUsername: adminUsername
     adminPassword: adminPassword
+  }
+}
+
+module loadTestMod './loadtest.bicep' = {
+  name: 'loadTestDeployment'
+  params: {
+    location: location
+    loadTestName: loadTestName
   }
 }
