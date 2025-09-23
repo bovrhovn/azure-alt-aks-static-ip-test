@@ -8,3 +8,7 @@ Accept: application/text
 
 ### GET status
 GET {{baseapiurl}}/status
+
+### GET status with pause
+GET {{baseapiurl}}/pause/5
+Accept: application/json

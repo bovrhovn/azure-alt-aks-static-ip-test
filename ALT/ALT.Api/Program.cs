@@ -22,6 +22,17 @@ app.MapGet("/status", () =>
         Status = $"Running at {DateTime.UtcNow}",
         Instance = Environment.MachineName
     });
+app.MapGet("/pause/{pause}", async (int pause) =>
+{
+    var timeToWait = TimeSpan.FromSeconds(pause);
+    await Task.Delay(timeToWait);
+    var result = new
+    {
+        Status = $"Running at {DateTime.UtcNow}",
+        Instance = Environment.MachineName
+    };
+    return result;
+});
 app.MapHealthChecks("/health", new HealthCheckOptions
 {
     Predicate = _ => true,
