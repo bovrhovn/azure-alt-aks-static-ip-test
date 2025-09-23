@@ -34,6 +34,7 @@ builder.Host.UseDefaultServiceProvider(options =>
 });
 var app = builder.Build();
 app.UseForwardedHeaders();
+app.UseRouting();
 app.MapReverseProxy();
 app.MapHealthChecks("/health", new HealthCheckOptions
 {

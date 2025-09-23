@@ -2,5 +2,9 @@
 GET {{baseyarpurl}}/health
 Accept: application/json
 
-### Yarp proxy to WeatherForecast
-GET {{baseyarpurl}}/api/instance-name
+### Yarp proxy to API
+GET {{baseyarpurl}}
+redirect-allowed: true
+
+### Yarp proxy to API without header
+GET {{baseyarpurl}}
