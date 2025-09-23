@@ -1,0 +1,30 @@
+﻿{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "location": {
+      "value": "swedencentral"
+    },
+    "vnetName": {
+      "value": "vnet-alt-aks"
+    },
+    "aksName": {
+      "value": "alt-aks-cluster"
+    },
+    "dnsZoneName": {
+      "value": "malaka.cloud"
+    },
+    "lbName": {
+      "value": "altakslb"
+    },
+    "vmssName": {
+      "value": "vmss-alt-aks-api"
+    },
+    "adminUsername": {
+      "value": "bojanv"
+    },
+    "adminPassword": {
+      "value": "P@ssw0rd1234!"
+    }
+  }
+}
