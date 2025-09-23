@@ -21,9 +21,9 @@ PS > Compile-Containers.ps1 -ResourceGroupName "demo-rg" -RegistryName "acr-demo
 Compiles containers inside the folder containers with az cli in resource group monitoring-rg and registry acr-monitoring
 with folder name containers, tag name latest and source folder src
     
-. LINK
+.LINK
 
-https://github.com/bovrhovn/meetup-intro-to-kiota
+https://github.com/bovrhovn/azure-alt-aks-static-ip-test
  
 #>
 param(

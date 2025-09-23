@@ -14,6 +14,10 @@ add folder to system environment variables
 PS > Add-DirToSystemEnv -PathToAdd "C:\Work\Projects\azure-demo-monitoring-basics\" -RerstartCurrentSession
 add folder to system environment variables
 
+.LINK
+
+https://github.com/bovrhovn/azure-alt-aks-static-ip-test
+
 #>
 
 [CmdletBinding(DefaultParameterSetName = "System")]

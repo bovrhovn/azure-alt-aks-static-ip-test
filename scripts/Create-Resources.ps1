@@ -15,9 +15,9 @@ PS > Create-Resources.ps1 -ResourceGroupName "rg-alt" -TemplateFile "main.bicep"
 
 Deploy resources to Azure from a Bicep template in resource group rg-alt with main.bicep and main.parameters.json
 
-. LINK
+.LINK
 
-https://github.com/bovrhovn/azure-alt-aks-static-ip
+https://github.com/bovrhovn/azure-alt-aks-static-ip-test
  
 #>
 param(

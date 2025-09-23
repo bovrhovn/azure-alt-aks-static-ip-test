@@ -13,9 +13,9 @@ This script will set the environment variables from local.env file.
 PS > Set-EnvVariables -EnvFileToReadFrom "local.env"
 set environment variables from local.env file
 
-. LINK
+.LINK
 
-https://github.com/bovrhovn/meetup-intro-to-kiota
+https://github.com/bovrhovn/azure-alt-aks-static-ip-test
  
 #>
 param(   
