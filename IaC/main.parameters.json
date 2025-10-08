@@ -6,35 +6,37 @@
       "value": "swedencentral"
     },
     "vnetName": {
-      "value": "vnet-alt-aks"
+      "value": "vnet-alt-aks-so"
     },
     "aksName": {
-      "value": "alt-aks-cluster"
-    },"acrName": {
-      "value": "acrsoalt"
+      "value": "alt-aks-cluster-so"
+    },
+    "agentVMSize": {
+      "value": "Standard_B2ms"
+    },
+    "acrName": {
+      "value": "acrsoaltso"
     },
     "dnsZoneName": {
       "value": "malaka.cloud"
     },
     "lbName": {
-      "value": "altakslb"
+      "value": "altakslbso"
     },
     "vmssName": {
-      "value": "vmss-alt-aks-api"
+      "value": "vmss-alt-aks-api-so"
     },
     "adminUsername": {
       "value": "bojanv"
     },
     "adminPassword": {
       "value": "P@ssw0rd1234!"
-    },
-    "identityName": {
-      "value": "alt-aks-vmss-identity-for-acr"
     },    
     "loadTestName": {
-      "value": "alt-aks-loadtest"
-    },"appInsightsName": {
-      "value": "alt-aks-loadtest-insights"
+      "value": "alt-aks-loadtest-so"
+    },
+    "appInsightsName": {
+      "value": "alt-aks-loadtest-insights-so"
     }
   }
 }

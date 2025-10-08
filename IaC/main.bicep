@@ -8,7 +8,7 @@ param adminUsername string
 @secure()
 param adminPassword string
 param acrName string = 'myAcr'
-param identityName string = 'myAksIdentity'
+param agentVMSize string = 'Standard_B2ms'
 param loadTestName string = 'myLoadTest'
 param appInsightsName string = 'myappinsights'
 param instanceCount int = 2
@@ -17,14 +17,6 @@ module vnetMod './vnet.bicep' = {
   name: 'vnetDeployment'
   params: {
     vnetName: vnetName
-    location: location
-  }
-}
-
-module identityMod './identity.bicep' = {
-  name: 'identityDeployment'
-  params: {
-    identityName: identityName
     location: location
   }
 }
@@ -43,9 +35,8 @@ module aksMod './aks.bicep' = {
     aksName: aksName
     location: location
     dnsPrefix: 'aksdns'
-    aksIdentityName: identityName
-    vnetSubnetId: vnetMod.outputs.aksSubnetId
-    userAssignedIdentityId: identityMod.outputs.identityId    
+    agentVMSize: agentVMSize    
+    vnetSubnetId: vnetMod.outputs.aksSubnetId        
     acrName: acrName
   }
 }
@@ -76,9 +67,7 @@ module vmssMod './vmss.bicep' = {
     adminUsername: adminUsername
     adminPassword: adminPassword
     acrName: acrName    
-    instanceCount: instanceCount
-    userAssignedIdentityId: identityMod.outputs.identityId
-    vmssIdentityName: identityName
+    instanceCount: instanceCount    
   }
 }
 
