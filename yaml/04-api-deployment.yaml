@@ -1,0 +1,42 @@
+﻿apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: apidemo
+  namespace: alt
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      tier: redirect
+      name: apidemo
+  template:
+    metadata:
+      labels:        
+        tier: redirect
+        name: apidemo
+    spec:
+      containers:
+        - name: apidemo
+          image: acrsoalt.azurecr.io/altaks/api:latest
+          ports:
+            - containerPort: 80
+          resources:
+            requests:
+              cpu: "10m"
+              memory: "128Mi"
+            limits:
+              cpu: "500m"
+              memory: "256Mi"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: apidemo
+  namespace: alt
+spec:
+  selector:
+    tier: redirect
+    name: apidemo
+  ports:
+    - protocol: TCP
+      port: 80

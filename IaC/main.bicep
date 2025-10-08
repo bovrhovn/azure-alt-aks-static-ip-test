@@ -10,6 +10,7 @@ param adminPassword string
 param acrName string = 'myAcr'
 param identityName string = 'myAksIdentity'
 param loadTestName string = 'myLoadTest'
+param appInsightsName string = 'myappinsights'
 param instanceCount int = 2
 
 module vnetMod './vnet.bicep' = {
@@ -86,5 +87,14 @@ module loadTestMod './loadtest.bicep' = {
   params: {
     location: location
     loadTestName: loadTestName
+  }
+}
+
+module appInsights './appInsights.bicep' = {
+  name: 'appInsightsDeployment'
+  params: {
+    appInsightsName: appInsightsName
+    location: location
+    applicationType: 'web'
   }
 }

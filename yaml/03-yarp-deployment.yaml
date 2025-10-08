@@ -1,0 +1,54 @@
+﻿apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: yarpdemo
+  namespace: alt
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      tier: redirect
+      name: yarpdemo
+  template:
+    metadata:
+      labels:        
+        tier: redirect
+        name: yarpdemo
+    spec:
+      containers:
+        - name: yarpdemo
+          image: acrsoalt.azurecr.io/altaks/yarp:latest
+          ports:
+            - containerPort: 80
+          env:
+            - name: ApplicationInsights__ConnectionString
+              valueFrom:
+                secretKeyRef:
+                  name: yarp
+                  key: appinsights
+            - name: Clusters__production-cluster__Destinations__destination-api__Address
+              valueFrom:
+                secretKeyRef:
+                  name: yarp
+                  key: urltoredirect
+          resources:
+            requests:
+              cpu: "100m"
+              memory: "128Mi"
+            limits:
+              cpu: "500m"
+              memory: "256Mi"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: yarpdemo
+  namespace: alt
+spec:
+  type: LoadBalancer
+  selector:
+    tier: redirect
+    name: yarpdemo
+  ports:
+    - protocol: TCP
+      port: 80

@@ -33,6 +33,8 @@
     },    
     "loadTestName": {
       "value": "alt-aks-loadtest"
+    },"appInsightsName": {
+      "value": "alt-aks-loadtest'insights"
     }
   }
 }
