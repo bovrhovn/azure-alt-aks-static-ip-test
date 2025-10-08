@@ -20,6 +20,12 @@ spec:
           image: acrsoalt.azurecr.io/altaks/api:latest
           ports:
             - containerPort: 80
+          env:
+            - name: ApplicationInsights__ConnectionString
+              valueFrom:
+                secretKeyRef:
+                  name: yarp
+                  key: appinsights
           resources:
             requests:
               cpu: "10m"

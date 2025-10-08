@@ -3,19 +3,19 @@ FROM mcr.microsoft.com/dotnet/sdk:9.0 AS build
 WORKDIR /src
 
 # Copy csproj and restore
-COPY ALT.API/ALT.API.csproj ALT.API/
-RUN dotnet restore ALT.API/ALT.API.csproj
+COPY ALT.Api/ALT.Api.csproj ALT.Api/
+RUN dotnet restore ALT.Api/ALT.Api.csproj
 
 # Copy everything and build
-COPY ALT.API/ ALT.API/
-RUN dotnet build ALT.API/ALT.API.csproj -c Release -o /app/build
+COPY ALT.Api/ ALT.Api/
+RUN dotnet build ALT.Api/ALT.Api.csproj -c Release -o /app/build
 
 # Publish stage
 FROM build AS publish
-RUN dotnet publish ALT.API/ALT.API.csproj -c Release -o /app/publish
+RUN dotnet publish ALT.Api/ALT.Api.csproj -c Release -o /app/publish
 
 # Runtime stage
 FROM mcr.microsoft.com/dotnet/aspnet:9.0 AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
-ENTRYPOINT ["dotnet", "ALT.API.dll"]
+ENTRYPOINT ["dotnet", "ALT.Api.dll"]
