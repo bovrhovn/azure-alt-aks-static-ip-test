@@ -10,6 +10,8 @@
     },
     "aksName": {
       "value": "alt-aks-cluster"
+    },"acrName": {
+      "value": "acrsoalt"
     },
     "dnsZoneName": {
       "value": "malaka.cloud"
