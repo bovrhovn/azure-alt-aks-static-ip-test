@@ -10,6 +10,7 @@ param adminPassword string
 param acrName string = 'myAcr'
 param identityName string = 'myAksIdentity'
 param loadTestName string = 'myLoadTest'
+param instanceCount int = 2
 
 module vnetMod './vnet.bicep' = {
   name: 'vnetDeployment'
@@ -35,7 +36,6 @@ module acrMod './acr.bicep' = {
   }
 }
 
-
 module aksMod './aks.bicep' = {
   name: 'aksDeployment'
   params: {
@@ -48,7 +48,6 @@ module aksMod './aks.bicep' = {
     acrName: acrName
   }
 }
-
 
 module lbMod './loadbalancer.bicep' = {
   name: 'lbDeployment'
@@ -75,6 +74,10 @@ module vmssMod './vmss.bicep' = {
     subnetId: vnetMod.outputs.vmssSubnetId
     adminUsername: adminUsername
     adminPassword: adminPassword
+    acrName: acrName    
+    instanceCount: instanceCount
+    userAssignedIdentityId: identityMod.outputs.identityId
+    vmssIdentityName: identityName
   }
 }
 

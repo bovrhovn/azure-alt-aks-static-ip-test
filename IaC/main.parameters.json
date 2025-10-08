@@ -29,8 +29,8 @@
       "value": "P@ssw0rd1234!"
     },
     "identityName": {
-      "value": "alt-aks-identity-for-acr"
-    },
+      "value": "alt-aks-vmss-identity-for-acr"
+    },    
     "loadTestName": {
       "value": "alt-aks-loadtest"
     }
