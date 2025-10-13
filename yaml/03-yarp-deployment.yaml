@@ -7,19 +7,15 @@ spec:
   replicas: 1
   selector:
     matchLabels:
-      tier: redirect
-      name: yarpdemo
+      app: yarpdemo
   template:
     metadata:
-      labels:        
-        tier: redirect
-        name: yarpdemo
+      labels:
+        app: yarpdemo
     spec:
       containers:
         - name: yarpdemo
-          image: acrsoalt.azurecr.io/altaks/yarp:latest
-          ports:
-            - containerPort: 80
+          image: altsomanual.azurecr.io/altaks/yarp:latest
           env:
             - name: ApplicationInsights__ConnectionString
               valueFrom:
@@ -31,6 +27,14 @@ spec:
                 secretKeyRef:
                   name: yarp
                   key: urltoredirect
+          ports:
+            - containerPort: 8080
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: 8080
+            initialDelaySeconds: 5
+            periodSeconds: 10
           resources:
             requests:
               cpu: "100m"
@@ -47,8 +51,8 @@ metadata:
 spec:
   type: LoadBalancer
   selector:
-    tier: redirect
-    name: yarpdemo
+    app: yarpdemo
   ports:
     - protocol: TCP
       port: 80
+      targetPort: 8080

@@ -8,3 +8,6 @@ redirect-allowed: true
 
 ### Yarp proxy to API without header
 GET {{baseyarpurl}}
+    
+### Yarp proxy to get envs values
+GET {{baseyarpurl}}/envs

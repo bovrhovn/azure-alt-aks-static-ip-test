@@ -7,25 +7,29 @@ spec:
   replicas: 1
   selector:
     matchLabels:
-      tier: redirect
-      name: apidemo
+      app: apidemo
   template:
     metadata:
-      labels:        
-        tier: redirect
-        name: apidemo
+      labels:
+        app: apidemo
     spec:
       containers:
         - name: apidemo
-          image: acrsoalt.azurecr.io/altaks/api:latest
+          image: altsomanual.azurecr.io/altaks/api:latest
           ports:
-            - containerPort: 80
+            - containerPort: 8080
           env:
             - name: ApplicationInsights__ConnectionString
               valueFrom:
                 secretKeyRef:
                   name: yarp
                   key: appinsights
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: 8080
+            initialDelaySeconds: 5
+            periodSeconds: 10
           resources:
             requests:
               cpu: "10m"
@@ -41,8 +45,8 @@ metadata:
   namespace: alt
 spec:
   selector:
-    tier: redirect
-    name: apidemo
+    app: apidemo
   ports:
     - protocol: TCP
       port: 80
+      targetPort: 8080      

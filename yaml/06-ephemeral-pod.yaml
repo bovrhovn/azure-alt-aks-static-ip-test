@@ -1,0 +1,17 @@
+﻿apiVersion: v1
+kind: Pod
+metadata:
+  name: test-client
+  labels:
+    role: test-client
+spec:
+  containers:
+    - name: test-client
+      image: busybox
+      imagePullPolicy: IfNotPresent
+      ports:
+        - name: test-client
+          containerPort: 80
+          protocol: TCP
+  restartPolicy: Always
+  
