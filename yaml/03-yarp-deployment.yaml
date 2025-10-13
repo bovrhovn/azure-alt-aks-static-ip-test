@@ -22,7 +22,7 @@ spec:
                 secretKeyRef:
                   name: yarp
                   key: appinsights
-            - name: Clusters__production-cluster__Destinations__destination-api__Address
+            - name: ReverseProxy__Clusters__production-cluster__Destinations__destination-api__Address
               valueFrom:
                 secretKeyRef:
                   name: yarp
