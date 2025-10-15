@@ -5,6 +5,7 @@
       <Path>../IaC</Path>
       <Path>../containers</Path>
       <Path>../scripts</Path>
+      <Path>../tests</Path>
       <Path>../yaml</Path>
     </attachedFolders>
     <explicitIncludes />
